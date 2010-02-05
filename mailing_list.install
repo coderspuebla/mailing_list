@@ -6,19 +6,14 @@
  * Install and update functions for mailing_list.
  */
 
-/**
- * Implementation of hook_install().
- */
-function mailing_list_install() {
-  drupal_install_schema('mailing_list');
-}
 
 /**
  * Implementation of hook_uninstall().
  */
 function mailing_list_uninstall() {
-  drupal_uninstall_schema('mailing_list');
-  db_query("DELETE FROM {blocks} WHERE module = 'mailing_list'");
+  $result = db_delete('blocks')
+    ->condition('module', 'mailing_list')
+    ->execute();
 }
 
 /**
@@ -50,6 +45,7 @@ function mailing_list_schema() {
   $schema['mailing_list_emails'] = array(
     'description' => t('An e-mail in a mailing list.'),
     'fields' => array(
+      // @todo: This isn't really needed, a pkey of mlid + mail is sufficient, isn't it?
       'eid' => array(
         'description' => 'The primary identifier for a mailing list e-mail.',
         'type' => 'serial',
@@ -86,7 +82,6 @@ function mailing_list_schema() {
       'mlid_mail' => array('mlid', 'mail'),
     ),
   );
-
 
   return $schema;
 }
