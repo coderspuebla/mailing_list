@@ -18,7 +18,7 @@ define('MAILING_LIST_MESSAGE_SUBSCRIPTION', 'Subscription for %mail saved.');
  */
 
 /**
- * Implementation of hook_help().
+ * Implement hook_help().
  */
 function mailing_list_help($path, $arg) {
   if ($path == 'admin/structure/mailing-list/%/import') {
@@ -27,19 +27,19 @@ function mailing_list_help($path, $arg) {
 }
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_permission().
  */
-function mailing_list_perm() {
+function mailing_list_permission() {
   return array(
     'administer mailing lists' => array(
-      'title' => '"Administer mailing lists',
-      'description' => 'Add or remove subscriptions and create / remove mailing lists.',
+      'title' => t('Administer mailing lists'),
+      'description' => t('Add or remove subscriptions and create / remove mailing lists.'),
     ),
   );
 }
 
 /**
- * Implementation of hook_menu().
+ * Implement hook_menu().
  */
 function mailing_list_menu() {
   $items = array();
@@ -198,7 +198,7 @@ function mailing_list_block_view($delta = '') {
 }
 
 /**
- * Implementation of hook_forms().
+ * Implement hook_forms().
  *
  * All subscription forms are build using mailing_list_subscription_form().
  * hook_forms() is required to provide unique form id for each one.
