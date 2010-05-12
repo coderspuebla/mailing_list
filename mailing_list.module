@@ -215,6 +215,16 @@ function mailing_list_forms() {
 }
 
 /**
+ * Implement hook_admin_paths().
+ */
+function mailing_list_admin_paths() {
+  $paths = array(
+    'admin/structure/mailing-list/*/export' => FALSE,
+  );
+  return $paths;
+}
+
+/**
  * Returns a list of all mailing lists keyed by the mlid
  *
  * @param $mlid

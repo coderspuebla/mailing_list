@@ -403,9 +403,10 @@ function mailing_list_export($list) {
 
 	// set headers for file transfer
 	$headers = array(
-		'Content-Type: application/octet-stream',
-		'Content-Disposition: attachment; filename="' . basename($full_path) . '";',
-		'Content-Length: ' . sprintf('%u', filesize($full_path)),
+		'Content-Type' => 'application/octet-stream',
+		'Content-Transfer-Encoding' => 'binary',
+		'Content-Disposition' => 'attachment; filename="' . basename($full_path) . '";',
+		'Content-Length' => sprintf('%u', filesize($full_path)),
 	);
 
 	file_transfer($full_path, $headers);
