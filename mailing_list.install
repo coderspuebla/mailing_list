@@ -11,7 +11,7 @@
  * Implementation of hook_uninstall().
  */
 function mailing_list_uninstall() {
-  $result = db_delete('blocks')
+  $result = db_delete('block')
     ->condition('module', 'mailing_list')
     ->execute();
 }
