@@ -133,7 +133,7 @@ function mailing_list_menu() {
     'title' => 'Edit e-mail',
     'type' => MENU_CALLBACK,
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('mailing_list_subscription_form', 3, 4),
+    'page arguments' => array('mailing_list_subscription_form', 3, TRUE, 4),
     'access arguments' => array('administer mailing lists'),
   );
   $items['admin/structure/mailing-list/%mailing_list/emails/delete'] = array(
@@ -389,17 +389,19 @@ function mailing_list_email_get_name($data) {
 /**
  * Display a form letting a user subscribe to a mailing list.
  */
-function mailing_list_subscription_form($form, &$form_state, $list, $email = NULL) {
+function mailing_list_subscription_form($form, &$form_state, $list, $is_callback = FALSE, $email = NULL) {
   if (user_access('administer mailing lists')) {
     $admin = TRUE;
     $is_edit = !empty($email);
-    if ($is_edit) {
-      $title = t("Editing @email on @list_name", array('@list_name' => $list->name, '@email' => $email->mail));
+    if ($is_callback) {
+      if ($is_edit) {
+        $title = t("Editing @email on @list_name", array('@list_name' => $list->name, '@email' => $email->mail));
+      }
+      else {
+        $title = t("Adding email to @list_name", array('@list_name' => $list->name));
+      }
+      drupal_set_title($title);
     }
-    else {
-      $title = t("Adding email to @list_name", array('@list_name' => $list->name));
-    }
-    drupal_set_title($title);
   } else {
     // Ensure that no one else can edit an entry.
     $email = NULL;
