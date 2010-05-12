@@ -187,7 +187,7 @@ function mailing_list_block_info() {
 function mailing_list_block_view($delta = '') {
   $list = mailing_list_load($delta);
   if (!$list) {
-    watchdog('Unable to load mailing list form on %delta block', array('%delta' => $delta));
+    watchdog('mailing_list', 'Unable to load mailing list form on %delta block', array('%delta' => $delta));
     return;
   }
   $block = array(
