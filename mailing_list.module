@@ -390,6 +390,7 @@ function mailing_list_email_get_name($data) {
  * Display a form letting a user subscribe to a mailing list.
  */
 function mailing_list_subscription_form($form, &$form_state, $list, $is_callback = FALSE, $email = NULL) {
+  $admin = FALSE;
   if (user_access('administer mailing lists')) {
     $admin = TRUE;
     $is_edit = !empty($email);
