@@ -399,7 +399,7 @@ function mailing_list_export($list) {
 	$emails = implode("\n", $emails) ."\n";
 
 	// write resultant string to file
-	file_save_data($emails, $full_path, FILE_EXISTS_REPLACE);
+  file_unmanaged_save_data($emails, $full_path, FILE_EXISTS_REPLACE);
 
 	// set headers for file transfer
 	$headers = array(
