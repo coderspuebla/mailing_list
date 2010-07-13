@@ -418,7 +418,7 @@ function mailing_list_admin_settings(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Subscription message'),
     '#description' => t('The message users see when they subscribe.  You can use %mail and %name as tokens.'),
-    '#default_value' => MAILING_LIST_MESSAGE_SUBSCRIPTION,
+    '#default_value' => variable_get('mailing_list_subscription_message', MAILING_LIST_MESSAGE_SUBSCRIPTION),
   );
 
   return system_settings_form($form, TRUE);
