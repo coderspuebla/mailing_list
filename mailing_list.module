@@ -74,7 +74,6 @@ function mailing_list_menu() {
   );
   $items['admin/structure/mailing-list/%mailing_list'] = array(
     'title' => 'List e-mails',
-    'type' => MENU_CALLBACK,
     'page callback' => 'mailing_list_emails_list',
     'page arguments' => array(3),
     'access arguments' => array('administer mailing lists'),
@@ -131,7 +130,6 @@ function mailing_list_menu() {
   );
   $items['admin/structure/mailing-list/%mailing_list/%mailing_list_email'] = array(
     'title' => 'Edit e-mail',
-    'type' => MENU_CALLBACK,
     'page callback' => 'drupal_get_form',
     'page arguments' => array('mailing_list_subscription_form', 3, TRUE, 4),
     'access arguments' => array('administer mailing lists'),
@@ -141,7 +139,6 @@ function mailing_list_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('mailing_list_email_delete_confirm', 3),
     'access arguments' => array('administer mailing lists'),
-    'type' => MENU_CALLBACK,
     'file' => 'mailing_list.admin.inc',
   );
 
