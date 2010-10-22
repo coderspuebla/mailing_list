@@ -507,7 +507,8 @@ function mailing_list_subscription_form_submit($form, &$form_state) {
         drupal_set_message('<span class="mailing-list-subscription-message">' . t(variable_get('mailing_list_message_admin_email_edited', "%name <%mail> updated."), array('%name' => $form_state['values']['name'], '%mail' => $form_state['values']['mail'])). '</span>');
         return;
       }
-      drupal_set_message('<span class="mailing-list-subscription-message">' . t(variable_get('mailing_list_message_admin_email_added', "%name <%mail> added to list."), array('%name' => $form_state['values']['name'], '%mail' => $form_state['values']['mail'])). '</span>');
+      global $user;
+      drupal_set_message('<span class="mailing-list-subscription-message">' . t(variable_get('mailing_list_message_admin_email_added', "Submission confirmed: %admin added %name <%mail> to list %list."), array('%name' => $form_state['values']['name'], '%mail' => $form_state['values']['mail'], '%admin' => $user->name, '%list' => $form_state['values']['ml_name'])). '</span>');
       return;
     }
     drupal_set_message('<span class="mailing-list-subscription-message">' . t(variable_get('mailing_list_subscription_message', MAILING_LIST_MESSAGE_SUBSCRIPTION), array('%name' => $form_state['values']['name'], '%mail' => $form_state['values']['mail'])). '</span>');
