@@ -201,6 +201,7 @@ function mailing_list_block_view($delta = '') {
  * hook_forms() is required to provide unique form id for each one.
  */
 function mailing_list_forms() {
+  $forms = array();
   $lists = mailing_list_get();
   foreach ($lists as $mlid => $list) {
     $forms['mailing_list_subscription_form_'. $mlid] = array(
