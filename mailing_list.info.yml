@@ -1,0 +1,4 @@
+name: "Mailing List"
+description: "Minimalistic mailing list module"
+package: Mail
+core: 8.x
